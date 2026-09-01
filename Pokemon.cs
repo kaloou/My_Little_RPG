@@ -40,7 +40,7 @@ namespace My_Little_RPG
             Type1 = type1;
 
         }
-        public Pokemon(int id, string nom, int hp, int forceBase, int defenseBase, string url, string type1, string type2) 
+        public Pokemon(int id, string nom, int hp, int forceBase, int defenseBase, string url, string type1, string type2)
             : this (id, nom, hp,  forceBase,  defenseBase,  url, type1)
         {
             Type2 = type2;
