@@ -73,6 +73,9 @@ namespace MyLittleRPG.Api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("NbVisites")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Traversable")
                         .HasColumnType("tinyint(1)");
 

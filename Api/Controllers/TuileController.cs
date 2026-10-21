@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyLittleRPG.Api.Data;
 using MyLittleRPG.Api.Models;
 using MyLittleRPG.Api.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyLittleRPG.Api.Controllers
 {
@@ -22,9 +23,11 @@ namespace MyLittleRPG.Api.Controllers
             
             if (x < 0 || x > 49 || y < 0 || y > 49) 
                 return BadRequest("Coordonnées hors des limites du monde (0-49).");
-            
-            
+
+
             var tuile = await _context.Tuiles.FindAsync(x, y);
+
+
 
             if (tuile == null)
             {
@@ -32,20 +35,22 @@ namespace MyLittleRPG.Api.Controllers
                 _context.Tuiles.Add(tuile);
                 await _context.SaveChangesAsync();
             }
+            
+            tuile.NbVisites++;
 
             return tuile;
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<List<Tuile>>> GetZone([FromQuery] int centreX, [FromQuery] int centreY, [FromQuery] int rayon)
         {
             var tuiles = new List<Tuile>();
-            
+
             int xMin = Math.Max(0, centreX - rayon);
             int xMax = Math.Min(49, centreX + rayon);
             int yMin = Math.Max(0, centreY - rayon);
             int yMax = Math.Min(49, centreY + rayon);
-            
+
             for (int x = centreX - rayon; x <= centreX + rayon; x++)
             {
                 for (int y = centreY - rayon; y <= centreY + rayon; y++)
@@ -63,7 +68,17 @@ namespace MyLittleRPG.Api.Controllers
             await _context.SaveChangesAsync();
             return tuiles;
         }
-        
+
+        [HttpGet("populaires")]
+        public async Task<ActionResult<List<Tuile>>> GetMostPopular()
+        {
+            var tuiles = await _context.Tuiles
+                .OrderByDescending(t => t.NbVisites)
+                .Take(5)
+                .ToListAsync();
+
+            return Ok(tuiles);
+        }
         
     }
     

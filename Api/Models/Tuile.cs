@@ -15,6 +15,8 @@ public class Tuile
 
     public bool Traversable { get; set; }
 
+    public int NbVisites { get; set; }
+
     public Tuile(int x, int y, TypeTuile type)
     {
         PositionX = x;
