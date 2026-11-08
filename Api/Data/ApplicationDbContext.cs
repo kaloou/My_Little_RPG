@@ -13,5 +13,9 @@ namespace MyLittleRPG.Api.Data
         public DbSet<Pokemon> Pokemons { get; set; }
         
         public DbSet<Tuile> Tuiles { get; set; }
+
+        public DbSet<Utilisateur> Utilisateurs { get; set; }
+
+        public DbSet<Personnage> Personnages { get; set; }
     }
 }

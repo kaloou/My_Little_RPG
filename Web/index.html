@@ -10,24 +10,48 @@
     <header>
         <h1>Visualisateur de Monde RPG</h1>
         <p>Explorez le monde généré par votre API</p>
+        <button id="deconnexion" hidden>Déconnexion</button>
     </header>
 
-    <div class="layout">
+    <div id="auth" class="layout">
+        <form id="form-connexion">
+            <h2>Connexion</h2>
+            <input name="email" type="email" placeholder="Courriel" required>
+            <input name="motDePasse" type="password" placeholder="Mot de passe" required>
+            <button>Se connecter</button>
+        </form>
+        <form id="form-inscription">
+            <h2>Inscription</h2>
+            <input name="email" type="email" placeholder="Courriel" maxlength="45" required>
+            <input name="pseudo" placeholder="Pseudo" maxlength="45" required>
+            <input name="motDePasse" type="password" placeholder="Mot de passe (6+)" minlength="6" required>
+            <button>Créer mon compte</button>
+        </form>
+        <p id="erreur-auth" class="erreur"></p>
+    </div>
+
+    <div id="jeu" class="layout" hidden>
         <aside>
             <section>
-                <h2>Informations</h2>
+                <h2>Personnage</h2>
+                <dl id="infos"></dl>
             </section>
 
             <section>
                 <h2>Navigation</h2>
-            </section>
-
-            <section>
-                <h2>Légende</h2>
+                <div id="fleches">
+                    <button data-dx="0" data-dy="-1">↑</button>
+                    <button data-dx="-1" data-dy="0">←</button>
+                    <button data-dx="1" data-dy="0">→</button>
+                    <button data-dx="0" data-dy="1">↓</button>
+                </div>
+                <p class="aide">Ou les flèches du clavier.</p>
+                <p id="erreur-jeu" class="erreur"></p>
             </section>
 
             <section>
                 <h2>Tuile Sélectionnée</h2>
+                <dl id="selection"></dl>
             </section>
         </aside>
 

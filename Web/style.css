@@ -84,3 +84,56 @@ main {
     cursor: pointer;
     font-size: 1.2rem;
 }
+
+header { position: relative; }
+#deconnexion { position: absolute; top: 1rem; right: 2rem; }
+
+#auth form {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 280px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+#auth h2 { margin: 0 0 0.5rem; }
+#auth { flex-wrap: wrap; align-items: flex-start; }
+
+.erreur { color: #c0392b; }
+.aide { font-size: 0.8rem; color: #666; }
+
+dl { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem; margin: 0.5rem 0 0; }
+dt { font-weight: 600; }
+dd { margin: 0; }
+
+#fleches {
+    display: grid;
+    grid-template-columns: repeat(3, 2.5rem);
+    grid-template-areas: ". h ." "g . d" ". b .";
+    gap: 4px;
+    margin-top: 0.5rem;
+}
+#fleches [data-dy="-1"] { grid-area: h; }
+#fleches [data-dx="-1"] { grid-area: g; }
+#fleches [data-dx="1"] { grid-area: d; }
+#fleches [data-dy="1"] { grid-area: b; }
+
+.tuile.hors { background: #333; }
+.tuile img { cursor: pointer; }
+.tuile.joueur { outline: 4px solid #e74c3c; outline-offset: -4px; }
+.tuile.joueur::after {
+    content: '';
+    position: absolute;
+    inset: 15%;
+    background: url('assets/personnage.svg') center / contain no-repeat;
+    image-rendering: pixelated;
+}
+
+@media (max-width: 600px) {
+    .layout { flex-direction: column; }
+    aside { width: 100%; }
+}
+
+[hidden] { display: none !important; }

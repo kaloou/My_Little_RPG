@@ -24,6 +24,13 @@ namespace MyLittleRPG.Api.Controllers
             if (x < 0 || x > 49 || y < 0 || y > 49) 
                 return BadRequest("Coordonnées hors des limites du monde (0-49).");
 
+            // Exploration : seulement pour un joueur connecté, dans son rayon de vision (5x5).
+            var userId = Sessions.UtilisateurId(Request);
+            if (userId == null) return Unauthorized("Connexion requise pour explorer.");
+            var perso = await _context.Personnages.FirstAsync(p => p.UtilisateurId == userId);
+            if (Math.Abs(x - perso.PositionX) > 2 || Math.Abs(y - perso.PositionY) > 2)
+                return BadRequest("Tuile hors du rayon de vision (5x5).");
+
 
             var tuile = await _context.Tuiles.FindAsync(x, y);
 
@@ -36,8 +43,6 @@ namespace MyLittleRPG.Api.Controllers
                 await _context.SaveChangesAsync();
             }
             
-            tuile.NbVisites++;
-
             return tuile;
         }
 

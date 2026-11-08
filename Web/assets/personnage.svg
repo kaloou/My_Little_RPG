@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- ombre -->
+  <rect x="4" y="14" width="8" height="1" fill="#000" opacity=".3"/>
+  <!-- chapeau -->
+  <rect x="5" y="1" width="6" height="1" fill="#8e1b1b"/>
+  <rect x="4" y="2" width="8" height="2" fill="#c0392b"/>
+  <!-- tête -->
+  <rect x="5" y="4" width="6" height="3" fill="#f2c89b"/>
+  <rect x="6" y="5" width="1" height="1" fill="#222"/>
+  <rect x="9" y="5" width="1" height="1" fill="#222"/>
+  <!-- corps -->
+  <rect x="4" y="7" width="8" height="4" fill="#2c3e6b"/>
+  <rect x="3" y="8" width="1" height="2" fill="#f2c89b"/>
+  <rect x="12" y="8" width="1" height="2" fill="#f2c89b"/>
+  <rect x="4" y="10" width="8" height="1" fill="#6b4226"/>
+  <!-- jambes -->
+  <rect x="5" y="11" width="2" height="3" fill="#4a3220"/>
+  <rect x="9" y="11" width="2" height="3" fill="#4a3220"/>
+</svg>
